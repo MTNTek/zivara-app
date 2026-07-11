@@ -5,9 +5,10 @@ import { ApplicationsRepository } from './applications.repository';
 import { JobsModule } from '../jobs/jobs.module';
 import { ProfessionalsModule } from '../professionals/professionals.module';
 import { EmployersModule } from '../employers/employers.module';
+import { NotificationsModule } from '../notifications/notifications.module';
 
 @Module({
-  imports: [JobsModule, ProfessionalsModule, EmployersModule],
+  imports: [JobsModule, ProfessionalsModule, EmployersModule, NotificationsModule],
   controllers: [ApplicationsController],
   providers: [ApplicationsService, ApplicationsRepository],
   exports: [ApplicationsService, ApplicationsRepository],

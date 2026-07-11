@@ -10,6 +10,7 @@ import { ApplicationsRepository } from './applications.repository';
 import { JobsRepository } from '../jobs/jobs.repository';
 import { ProfessionalsRepository } from '../professionals/professionals.repository';
 import { EmployersRepository } from '../employers/employers.repository';
+import { NotificationsService } from '../notifications/notifications.service';
 import { NotificationType } from '@zivara/shared';
 import type { ApplyDto } from './dto/apply.dto';
 import type { UpdateStatusDto } from './dto/update-status.dto';
@@ -35,6 +36,7 @@ export class ApplicationsService {
     private readonly jobsRepo: JobsRepository,
     private readonly professionalsRepo: ProfessionalsRepository,
     private readonly employersRepo: EmployersRepository,
+    private readonly notificationsService: NotificationsService,
   ) {}
 
   // ─── Professional: submit application ────────────────────────────────────
@@ -196,17 +198,23 @@ export class ApplicationsService {
   // ─── Helpers ──────────────────────────────────────────────────────────────
 
   /**
-   * Placeholder notification dispatch — wired to NotificationsService in Sprint 5.
-   * Logged here so the audit trail exists from day one.
+   * Dispatch a notification. Type determines the exact message content —
+   * callers cannot override content, enforcing notification accuracy.
    */
   private async sendNotification(
     recipientUserId: string,
     type: NotificationType,
     referenceId: string,
   ): Promise<void> {
-    console.log(
-      `[ApplicationsService] Notification → user:${recipientUserId} type:${type} ref:${referenceId}`,
-    );
+    try {
+      await this.notificationsService.send(recipientUserId, type, {
+        referenceType: 'application',
+        referenceId,
+      });
+    } catch (err) {
+      // Notification failure must never break the main flow
+      console.error(`[ApplicationsService] Notification dispatch failed: ${String(err)}`);
+    }
   }
 
   private async sendNotificationToUser(

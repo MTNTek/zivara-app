@@ -11,6 +11,7 @@ import { ProfessionalsModule } from './professionals/professionals.module';
 import { EmployersModule } from './employers/employers.module';
 import { JobsModule } from './jobs/jobs.module';
 import { ApplicationsModule } from './applications/applications.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 /**
  * Root application module.
@@ -64,6 +65,9 @@ import { ApplicationsModule } from './applications/applications.module';
 
     // Applications — apply, status transitions, stale reminders
     ApplicationsModule,
+
+    // Notifications — in-app notification center, accurate type-to-content mapping
+    NotificationsModule,
 
     // Job postings, applications, status lifecycle
     JobsModule,
