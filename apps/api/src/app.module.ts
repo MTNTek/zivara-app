@@ -8,6 +8,9 @@ import { HealthModule } from './health/health.module';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { AuthModule } from './auth/auth.module';
 import { ProfessionalsModule } from './professionals/professionals.module';
+import { EmployersModule } from './employers/employers.module';
+import { JobsModule } from './jobs/jobs.module';
+import { ApplicationsModule } from './applications/applications.module';
 
 /**
  * Root application module.
@@ -52,6 +55,18 @@ import { ProfessionalsModule } from './professionals/professionals.module';
 
     // Professional profiles, experience, skills, documents
     ProfessionalsModule,
+
+    // Employer company profiles, team members, verification
+    EmployersModule,
+
+    // Job postings — create, publish, search, expire
+    JobsModule,
+
+    // Applications — apply, status transitions, stale reminders
+    ApplicationsModule,
+
+    // Job postings, applications, status lifecycle
+    JobsModule,
   ],
   providers: [
     // Global ValidationPipe: strips unknown fields, enforces DTO validation
