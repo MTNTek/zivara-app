@@ -1,0 +1,63 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Zivara — Local Development Stack
+#
+# Usage:
+#   1. cp .env.example .env   (first time only)
+#   2. docker compose up -d   (starts postgres; api and web can run via npm)
+#   3. npm run db:migrate      (from apps/api — apply schema)
+#   4. npm run db:seed         (from apps/api — populate dev data)
+#   5. npm run db:verify       (from apps/api — confirm everything is healthy)
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+  # ── PostgreSQL — primary data store ──────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-zivara}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    ports:
+      - '${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-zivara}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  # ── API — NestJS backend ──────────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    restart: unless-stopped
+    ports:
+      - '${API_PORT:-4000}:4000'
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:${POSTGRES_PORT:-5432}/${POSTGRES_DB:-zivara}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ── Web — Next.js frontend ────────────────────────────────────────────────────
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    restart: unless-stopped
+    ports:
+      - '${WEB_PORT:-3000}:3000'
+    depends_on:
+      - api
+    environment:
+      NEXT_PUBLIC_API_URL: http://api:${API_PORT:-4000}
+
+volumes:
+  postgres_data:
+    name: zivara_postgres_data

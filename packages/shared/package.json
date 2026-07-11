@@ -1,0 +1,18 @@
+{
+  "name": "@zivara/shared",
+  "version": "0.1.0",
+  "description": "Shared TypeScript types and enums for the Zivara platform",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}

@@ -1,0 +1,30 @@
+version: '3.9'
+
+# Production overrides — applied on top of docker-compose.yml
+# Usage: docker compose -f docker-compose.yml -f docker-compose.prod.yml up
+
+services:
+  api:
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+    # No bind mounts in production — image is self-contained
+    volumes: []
+
+  web:
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+    volumes: []
+
+  postgres:
+    restart: unless-stopped
+    # In production, use managed RDS — this is a fallback only
+    deploy:
+      resources:
+        limits:
+          memory: 512m
