@@ -24,44 +24,60 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="section-full bg-white py-16 lg:py-20" aria-labelledby="testimonials-heading">
-      <div className="container-content">
-        <div className="text-center mb-12">
-          <h2 id="testimonials-heading" className="text-2xl md:text-3xl font-bold text-[#0F172A] font-[Manrope]">
+    <section
+      style={{ width: '100%', backgroundColor: '#ffffff', padding: '5rem 0' }}
+      aria-labelledby="testimonials-heading"
+    >
+      <div style={{ width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '0 1.5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <h2
+            id="testimonials-heading"
+            style={{ fontFamily: "'Manrope', system-ui, sans-serif", fontSize: '1.875rem', fontWeight: 700, color: '#0F172A' }}
+          >
             Trusted by Thousands
           </h2>
-          <p className="mt-2 text-[#64748B]">Real experiences from professionals and employers across the GCC</p>
+          <p style={{ marginTop: '0.5rem', color: '#64748B' }}>
+            Real experiences from professionals and employers across the GCC
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '1.5rem',
+          width: '100%',
+        }}>
           {testimonials.map((t) => (
             <figure
               key={t.name}
-              className="bg-[#F8FAFC] rounded-2xl p-6 border border-[#E2E8F0] hover:border-[#14B8A6] hover:shadow-[0_4px_16px_rgba(20,184,166,0.1)] transition-all duration-200"
+              style={{
+                backgroundColor: '#F8FAFC',
+                borderRadius: '16px',
+                padding: '1.5rem',
+                border: '1px solid #E2E8F0',
+                margin: 0,
+              }}
             >
-              {/* Stars */}
-              <div className="flex gap-0.5 mb-4" aria-label={`${t.stars} out of 5 stars`}>
+              <div style={{ display: 'flex', gap: '2px', marginBottom: '1rem' }} aria-label={`${t.stars} out of 5 stars`}>
                 {Array.from({ length: t.stars }).map((_, i) => (
-                  <span key={i} className="text-[#F59E0B] text-lg" aria-hidden="true">★</span>
+                  <span key={i} style={{ color: '#F59E0B', fontSize: '1.125rem' }} aria-hidden="true">★</span>
                 ))}
               </div>
-
-              {/* Quote */}
-              <blockquote className="text-sm text-[#475569] leading-relaxed mb-6">
+              <blockquote style={{ fontSize: '0.9rem', color: '#475569', lineHeight: 1.7, marginBottom: '1.5rem', fontStyle: 'normal' }}>
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-
-              {/* Attribution */}
-              <figcaption className="flex items-center gap-3">
-                <div
-                  className="w-10 h-10 rounded-full bg-[#14B8A6] flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-                  aria-hidden="true"
-                >
+              <figcaption style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{
+                  width: '40px', height: '40px', borderRadius: '50%',
+                  backgroundColor: '#14B8A6', display: 'flex', alignItems: 'center',
+                  justifyContent: 'center', color: '#ffffff', fontWeight: 700, fontSize: '0.875rem',
+                  flexShrink: 0,
+                }} aria-hidden="true">
                   {t.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[#0F172A]">{t.name}</p>
-                  <p className="text-xs text-[#94A3B8]">{t.role} · {t.country}</p>
+                  <p style={{ fontWeight: 600, fontSize: '0.875rem', color: '#0F172A', margin: 0 }}>{t.name}</p>
+                  <p style={{ fontSize: '0.75rem', color: '#94A3B8', margin: 0 }}>{t.role} · {t.country}</p>
                 </div>
               </figcaption>
             </figure>

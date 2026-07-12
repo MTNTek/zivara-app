@@ -1,38 +1,66 @@
 import Link from 'next/link';
 
 const categories = [
-  { name: 'Construction', icon: '🏗', count: 142, slug: 'construction' },
-  { name: 'Solar Energy', icon: '☀️', count: 38, slug: 'solar-energy' },
-  { name: 'Hospitality', icon: '🏨', count: 89, slug: 'hospitality' },
-  { name: 'Cleaning', icon: '🧹', count: 67, slug: 'cleaning' },
-  { name: 'Domestic Services', icon: '🏠', count: 54, slug: 'domestic-services' },
-  { name: 'Private Tutoring', icon: '📚', count: 24, slug: 'private-tutoring' },
+  { name: 'Construction', icon: '🏗', count: 142, slug: 'Construction' },
+  { name: 'Solar Energy', icon: '☀️', count: 38, slug: 'Solar Energy' },
+  { name: 'Hospitality', icon: '🏨', count: 89, slug: 'Hospitality' },
+  { name: 'Cleaning', icon: '🧹', count: 67, slug: 'Cleaning' },
+  { name: 'Domestic Services', icon: '🏠', count: 54, slug: 'Domestic Services' },
+  { name: 'Private Tutoring', icon: '📚', count: 24, slug: 'Private Tutoring' },
 ];
 
 export function CategoriesSection() {
   return (
-    <section className="section-full bg-[#F8FAFC] py-16 lg:py-20" aria-labelledby="categories-heading">
-      <div className="container-content">
-        <div className="text-center mb-10">
-          <h2 id="categories-heading" className="text-2xl md:text-3xl font-bold text-[#0F172A] font-[Manrope]">
+    <section
+      style={{ width: '100%', backgroundColor: '#F8FAFC', padding: '4rem 0' }}
+      aria-labelledby="categories-heading"
+    >
+      <div style={{ width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '0 1.5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+          <h2
+            id="categories-heading"
+            style={{ fontFamily: "'Manrope', system-ui, sans-serif", fontSize: '1.875rem', fontWeight: 700, color: '#0F172A' }}
+          >
             Browse by Industry
           </h2>
-          <p className="mt-2 text-[#64748B]">Find opportunities across the GCC&apos;s fastest-growing sectors</p>
+          <p style={{ marginTop: '0.5rem', color: '#64748B', fontSize: '1rem' }}>
+            Find opportunities across the GCC&apos;s fastest-growing sectors
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+          gap: '1rem',
+          width: '100%',
+        }}>
           {categories.map((cat) => (
             <Link
               key={cat.slug}
-              href={`/jobs?industry=${encodeURIComponent(cat.name)}`}
-              className="group flex flex-col items-center text-center p-5 bg-white rounded-2xl border border-[#E2E8F0] hover:border-[#14B8A6] hover:shadow-[0_4px_16px_rgba(20,184,166,0.15)] transition-all duration-200 hover:-translate-y-0.5"
+              href={`/jobs?industry=${encodeURIComponent(cat.slug)}`}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+                padding: '1.5rem 1rem',
+                backgroundColor: '#ffffff',
+                borderRadius: '16px',
+                border: '1px solid #E2E8F0',
+                textDecoration: 'none',
+                transition: 'all 200ms',
+              }}
               aria-label={`${cat.name} — ${cat.count} jobs available`}
             >
-              <span className="text-4xl mb-3 block" aria-hidden="true">{cat.icon}</span>
-              <span className="text-sm font-semibold text-[#0F172A] group-hover:text-[#14B8A6] transition-colors leading-tight">
+              <span style={{ fontSize: '2.5rem', marginBottom: '0.75rem', display: 'block' }} aria-hidden="true">
+                {cat.icon}
+              </span>
+              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#0F172A', lineHeight: 1.3 }}>
                 {cat.name}
               </span>
-              <span className="mt-1 text-xs text-[#94A3B8]">{cat.count} jobs</span>
+              <span style={{ marginTop: '0.25rem', fontSize: '0.75rem', color: '#94A3B8' }}>
+                {cat.count} jobs
+              </span>
             </Link>
           ))}
         </div>

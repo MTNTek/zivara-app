@@ -11,9 +11,9 @@ import { TestimonialsSection } from '@/components/home/testimonials-section';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen w-full flex flex-col">
+    <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
-      <main id="main-content" className="flex-1 w-full">
+      <main id="main-content" style={{ flex: 1, width: '100%' }}>
         <HeroSection />
         <SearchSection />
         <CategoriesSection />

@@ -7,13 +7,11 @@ export const metadata: Metadata = {
     default: 'Zivara — Find Trusted Work. Hire Trusted People.',
   },
   description:
-    'The GCC\'s most trusted workforce marketplace. Find verified professionals in Construction, Solar Energy, Hospitality, Cleaning, Domestic Services, and more.',
-  keywords: ['jobs UAE', 'GCC workforce', 'hire workers', 'construction jobs', 'hospitality jobs'],
+    "The GCC's most transparent workforce marketplace. Verified employers, live hiring progress, and fair pay.",
   openGraph: {
     title: 'Zivara — Find Trusted Work. Hire Trusted People.',
-    description: 'The GCC\'s most trusted workforce marketplace.',
+    description: "The GCC's most trusted workforce marketplace.",
     type: 'website',
-    locale: 'en_US',
   },
 };
 
@@ -25,17 +23,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" dir="ltr" className="h-full w-full">
-      <body className="min-h-full w-full antialiased">
-        {/* Skip to main content — accessibility */}
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <div id="main-content" className="min-h-full w-full">
+    <html lang="en" dir="ltr">
+      <body>
+        <a href="#main" className="skip-link">Skip to main content</a>
+        <div id="main" style={{ width: '100%', minHeight: '100vh' }}>
           {children}
         </div>
       </body>

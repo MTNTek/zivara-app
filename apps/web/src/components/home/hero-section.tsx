@@ -2,52 +2,130 @@ import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <section className="section-full bg-white relative overflow-hidden" aria-labelledby="hero-heading">
-      {/* Background gradient arc */}
-      <div className="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none" aria-hidden="true">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-64 bg-gradient-to-t from-[#F0FDFA] to-transparent rounded-t-[50%]" />
-      </div>
+    <section
+      style={{ width: '100%', backgroundColor: '#ffffff', position: 'relative', overflow: 'hidden' }}
+      aria-labelledby="hero-heading"
+    >
+      {/* Full-bleed teal gradient at bottom */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '200px',
+          background: 'linear-gradient(to top, #F0FDFA, transparent)',
+          pointerEvents: 'none',
+        }}
+        aria-hidden="true"
+      />
 
-      <div className="container-content relative py-20 lg:py-28">
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '1440px',
+          margin: '0 auto',
+          padding: '5rem 1.5rem 6rem',
+          position: 'relative',
+        }}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', maxWidth: '720px', margin: '0 auto' }}>
           {/* Trust badge */}
-          <div className="inline-flex items-center gap-2 bg-[#F0FDFA] border border-[#CCFBF1] rounded-full px-4 py-2 mb-8">
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: '#F0FDFA',
+              border: '1px solid #CCFBF1',
+              borderRadius: '9999px',
+              padding: '6px 16px',
+              marginBottom: '2rem',
+            }}
+          >
             <span className="live-dot" aria-hidden="true" />
-            <span className="text-sm font-semibold text-[#0D9488]">Trusted by 18,000+ professionals across the GCC</span>
+            <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#0D9488' }}>
+              Trusted by 18,000+ professionals across the GCC
+            </span>
           </div>
 
           {/* Headline */}
           <h1
             id="hero-heading"
-            className="text-[2.5rem] md:text-[3.25rem] lg:text-[3.75rem] font-extrabold text-[#0F172A] leading-[1.1] tracking-tight mb-6 font-[Manrope]"
+            style={{
+              fontFamily: "'Manrope', system-ui, sans-serif",
+              fontSize: 'clamp(2.25rem, 5vw, 3.75rem)',
+              fontWeight: 800,
+              color: '#0F172A',
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              marginBottom: '1.5rem',
+            }}
           >
             Find Trusted Work.<br />
-            <span className="text-[#14B8A6]">Hire Trusted People.</span>
+            <span style={{ color: '#14B8A6' }}>Hire Trusted People.</span>
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl text-[#475569] leading-relaxed mb-10 max-w-xl">
+          {/* Sub */}
+          <p
+            style={{
+              fontSize: '1.125rem',
+              color: '#475569',
+              lineHeight: 1.7,
+              marginBottom: '2.5rem',
+              maxWidth: '520px',
+            }}
+          >
             The GCC&apos;s most transparent workforce marketplace. Verified employers, live hiring progress, and fair pay — all in one place.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link
               href="/jobs"
-              className="inline-flex items-center justify-center h-14 px-8 bg-[#14B8A6] text-white text-base font-semibold rounded-[6px] hover:bg-[#0D9488] hover:shadow-[0_4px_16px_rgba(20,184,166,0.25)] transition-all duration-150 active:scale-[0.98]"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '56px',
+                padding: '0 2rem',
+                backgroundColor: '#14B8A6',
+                color: '#ffffff',
+                fontSize: '1rem',
+                fontWeight: 600,
+                borderRadius: '6px',
+                textDecoration: 'none',
+                transition: 'background-color 150ms',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#0D9488')}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#14B8A6')}
             >
               Find Jobs
             </Link>
             <Link
               href="/register/employer"
-              className="inline-flex items-center justify-center h-14 px-8 bg-white text-[#0F172A] text-base font-semibold rounded-[6px] border-[1.5px] border-[#E2E8F0] hover:border-[#14B8A6] hover:text-[#14B8A6] hover:bg-[#F0FDFA] transition-all duration-150 active:scale-[0.98]"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '56px',
+                padding: '0 2rem',
+                backgroundColor: '#ffffff',
+                color: '#0F172A',
+                fontSize: '1rem',
+                fontWeight: 600,
+                borderRadius: '6px',
+                border: '1.5px solid #E2E8F0',
+                textDecoration: 'none',
+                transition: 'all 150ms',
+              }}
             >
               Hire Workers
             </Link>
           </div>
 
           {/* Social proof */}
-          <p className="mt-8 text-sm text-[#94A3B8]">
+          <p style={{ marginTop: '2rem', fontSize: '0.875rem', color: '#94A3B8' }}>
             Trusted by Al Fardan Construction, SolarVision Gulf, Royal Palm Hospitality and 300+ more
           </p>
         </div>

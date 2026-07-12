@@ -29,15 +29,16 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-200 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
           scrolled
             ? 'bg-white/95 backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.07)] border-b border-[#E2E8F0]'
             : 'bg-white'
         }`}
+        style={{ width: '100%' }}
         aria-label="Main navigation"
       >
         <div className="container-content">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-16" style={{ width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '0 1.5rem' }}>
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 flex-shrink-0" aria-label="Zivara home">
               <span className="text-2xl font-extrabold text-[#14B8A6] font-[Manrope]">Zivara</span>
