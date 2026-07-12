@@ -1,0 +1,107 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+    # Only deploy when CI passes — this workflow runs after ci.yml
+  workflow_run:
+    workflows: [CI]
+    branches: [main]
+    types: [completed]
+
+env:
+  AWS_REGION: me-south-1
+  ECR_REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
+  ECS_CLUSTER: zivara-prod
+
+jobs:
+  deploy:
+    name: Deploy — ECR push + ECS rolling update
+    runs-on: ubuntu-latest
+    # Only deploy if CI passed
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Log in to Amazon ECR
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push API image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: apps/api/Dockerfile
+          push: true
+          tags: |
+            ${{ env.ECR_REGISTRY }}/zivara/api:${{ github.sha }}
+            ${{ env.ECR_REGISTRY }}/zivara/api:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push Web image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: apps/web/Dockerfile
+          push: true
+          tags: |
+            ${{ env.ECR_REGISTRY }}/zivara/web:${{ github.sha }}
+            ${{ env.ECR_REGISTRY }}/zivara/web:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run database migrations (pre-deployment)
+        run: |
+          aws ecs run-task \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --task-definition zivara-api-migrate \
+            --launch-type FARGATE \
+            --network-configuration "awsvpcConfiguration={subnets=[${{ secrets.ECS_SUBNET }}],securityGroups=[${{ secrets.ECS_SECURITY_GROUP }}]}" \
+            --overrides '{"containerOverrides":[{"name":"api","command":["node","dist/database/migrate"]}]}' \
+            --wait-until-stopped
+
+      - name: Deploy API to ECS (rolling)
+        run: |
+          aws ecs update-service \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --service zivara-api \
+            --force-new-deployment \
+            --region ${{ env.AWS_REGION }}
+
+      - name: Deploy Web to ECS (rolling)
+        run: |
+          aws ecs update-service \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --service zivara-web \
+            --force-new-deployment \
+            --region ${{ env.AWS_REGION }}
+
+      - name: Wait for stable deployments
+        run: |
+          aws ecs wait services-stable \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --services zivara-api zivara-web \
+            --region ${{ env.AWS_REGION }}
+
+      - name: Smoke test
+        run: |
+          # Give the ALB a moment to route to new tasks
+          sleep 10
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.APP_URL }}/health)
+          if [ "$STATUS" != "200" ]; then
+            echo "Smoke test FAILED — /health returned $STATUS"
+            exit 1
+          fi
+          echo "Smoke test passed — /health returned 200"
