@@ -23,8 +23,8 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer style={{ width: '100%', backgroundColor: '#0F172A' }} aria-label="Site footer">
-      <div style={{ width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '4rem 1.5rem' }}>
+    <footer className="full-screen" style={{ backgroundColor: '#0F172A', justifyContent: 'center' }} aria-label="Site footer">
+      <div className="screen-content" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">

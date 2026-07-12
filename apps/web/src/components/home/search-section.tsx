@@ -30,11 +30,17 @@ export function SearchSection() {
   };
 
   return (
-    <section className="section-full bg-white pb-16" aria-labelledby="search-heading">
-      <div className="container-content">
-        <h2 id="search-heading" className="sr-only">Search for jobs</h2>
+    <section className="full-screen" style={{ backgroundColor: '#ffffff' }} aria-labelledby="search-heading">
+      <div className="screen-content">
+        <h2 id="search-heading" style={{
+          fontFamily: "'Manrope', system-ui, sans-serif",
+          fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+          fontWeight: 700, color: '#0F172A', textAlign: 'center', marginBottom: '2rem',
+        }}>
+          Find Your Next Opportunity
+        </h2>
 
-        <div className="max-w-3xl mx-auto">
+        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
           <form onSubmit={handleSearch} role="search" aria-label="Job search">
             {/* Main search box */}
             <div className="bg-white rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] border border-[#E2E8F0] overflow-hidden">

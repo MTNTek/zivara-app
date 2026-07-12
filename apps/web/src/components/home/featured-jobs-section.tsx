@@ -164,8 +164,8 @@ function JobCard({ job }: { job: typeof DEMO_JOBS[0] }) {
 
 export function FeaturedJobsSection() {
   return (
-    <section className="section-full bg-white py-16 lg:py-20" aria-labelledby="featured-jobs-heading">
-      <div className="container-content">
+    <section className="full-screen" style={{ backgroundColor: '#ffffff', justifyContent: 'flex-start', paddingTop: '5rem' }} aria-labelledby="featured-jobs-heading">
+      <div className="screen-content">
         <div className="flex items-center justify-between mb-10">
           <div>
             <h2 id="featured-jobs-heading" className="text-2xl md:text-3xl font-bold text-[#0F172A] font-[Manrope]">

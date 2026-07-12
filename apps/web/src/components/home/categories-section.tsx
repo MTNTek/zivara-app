@@ -11,56 +11,41 @@ const categories = [
 
 export function CategoriesSection() {
   return (
-    <section
-      style={{ width: '100%', backgroundColor: '#F8FAFC', padding: '4rem 0' }}
-      aria-labelledby="categories-heading"
-    >
-      <div style={{ width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '0 1.5rem' }}>
+    <section className="full-screen" style={{ backgroundColor: '#F8FAFC' }} aria-labelledby="categories-heading">
+      <div className="screen-content">
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h2
-            id="categories-heading"
-            style={{ fontFamily: "'Manrope', system-ui, sans-serif", fontSize: '1.875rem', fontWeight: 700, color: '#0F172A' }}
-          >
+          <h2 id="categories-heading" style={{
+            fontFamily: "'Manrope', system-ui, sans-serif",
+            fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+            fontWeight: 700, color: '#0F172A', marginBottom: '0.5rem',
+          }}>
             Browse by Industry
           </h2>
-          <p style={{ marginTop: '0.5rem', color: '#64748B', fontSize: '1rem' }}>
+          <p style={{ color: '#64748B', fontSize: '1.0625rem' }}>
             Find opportunities across the GCC&apos;s fastest-growing sectors
           </p>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+          gridTemplateColumns: 'repeat(6, 1fr)',
           gap: '1rem',
-          width: '100%',
         }}>
           {categories.map((cat) => (
             <Link
               key={cat.slug}
               href={`/jobs?industry=${encodeURIComponent(cat.slug)}`}
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-                padding: '1.5rem 1rem',
-                backgroundColor: '#ffffff',
-                borderRadius: '16px',
-                border: '1px solid #E2E8F0',
-                textDecoration: 'none',
-                transition: 'all 200ms',
+                display: 'flex', flexDirection: 'column', alignItems: 'center',
+                textAlign: 'center', padding: '1.75rem 1rem',
+                backgroundColor: '#ffffff', borderRadius: '16px',
+                border: '1px solid #E2E8F0', textDecoration: 'none',
               }}
-              aria-label={`${cat.name} — ${cat.count} jobs available`}
+              aria-label={`${cat.name} — ${cat.count} jobs`}
             >
-              <span style={{ fontSize: '2.5rem', marginBottom: '0.75rem', display: 'block' }} aria-hidden="true">
-                {cat.icon}
-              </span>
-              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#0F172A', lineHeight: 1.3 }}>
-                {cat.name}
-              </span>
-              <span style={{ marginTop: '0.25rem', fontSize: '0.75rem', color: '#94A3B8' }}>
-                {cat.count} jobs
-              </span>
+              <span style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }} aria-hidden="true">{cat.icon}</span>
+              <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0F172A', lineHeight: 1.3 }}>{cat.name}</span>
+              <span style={{ marginTop: '0.25rem', fontSize: '0.75rem', color: '#94A3B8' }}>{cat.count} jobs</span>
             </Link>
           ))}
         </div>

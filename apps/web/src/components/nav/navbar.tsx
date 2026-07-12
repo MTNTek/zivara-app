@@ -32,7 +32,7 @@ export function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
           scrolled
             ? 'bg-white/95 backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.07)] border-b border-[#E2E8F0]'
-            : 'bg-white'
+            : 'bg-white/80 backdrop-blur-sm'
         }`}
         style={{ width: '100%' }}
         aria-label="Main navigation"
@@ -87,8 +87,7 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Spacer to prevent content jumping under fixed nav */}
-      <div className="h-16" aria-hidden="true" />
+      {/* No spacer needed — full-screen sections start from the top */}
 
       {/* Mobile menu overlay */}
       {mobileOpen && (

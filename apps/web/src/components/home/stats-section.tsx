@@ -53,8 +53,8 @@ export function StatsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="section-full bg-[#14B8A6] py-12" aria-label="Platform statistics">
-      <div className="container-content">
+    <section ref={ref} className="full-screen" style={{ backgroundColor: '#14B8A6' }} aria-label="Platform statistics">
+      <div className="screen-content">
         <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/20">
           {stats.map((s) => (
             <StatItem key={s.label} {...s} active={active} />

@@ -18,8 +18,8 @@ export function HowItWorksSection() {
   const [tab, setTab] = useState<'professionals' | 'employers'>('professionals');
 
   return (
-    <section className="section-full bg-[#F8FAFC] py-16 lg:py-20" aria-labelledby="how-heading" id="how-it-works">
-      <div className="container-content">
+    <section className="full-screen" style={{ backgroundColor: '#F8FAFC' }} aria-labelledby="how-heading" id="how-it-works">
+      <div className="screen-content">
         <div className="text-center mb-10">
           <h2 id="how-heading" className="text-2xl md:text-3xl font-bold text-[#0F172A] font-[Manrope]">
             How It Works
