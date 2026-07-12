@@ -11,7 +11,8 @@ import { TestimonialsSection } from '@/components/home/testimonials-section';
 
 export default function HomePage() {
   return (
-    <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    // This div fills the 95vw × 95vh rounded card from layout.tsx
+    <div style={{ width: '100%', flex: 1, display: 'flex', flexDirection: 'column' }}>
       <Navbar />
       <main id="main-content" style={{ flex: 1, width: '100%' }}>
         <HeroSection />

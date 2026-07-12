@@ -43,19 +43,24 @@
 }
 
 /* ─── Global base ───────────────────────────────────────────────────────────── */
-html, body {
+html {
   width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
 }
 
 body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #0F172A;
+  /* Outer background — visible as the 2.5% gap around the app */
+  background-color: #E2E8F0;
 }
 
 *, *::before, *::after {
@@ -64,6 +69,25 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Manrope', system-ui, sans-serif;
+}
+
+/* ─── Content container ─────────────────────────────────────────────────────── */
+/* Sections fill 100% width (full-bleed backgrounds).
+   Inner .page-content is centred at 72% width, capped at 1200px.
+   This matches the Google-style proportions requested. */
+.page-content {
+  width: 72%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .page-content { width: 85%; }
+}
+
+@media (max-width: 640px) {
+  .page-content { width: 92%; }
 }
 
 /* ─── Skip link ─────────────────────────────────────────────────────────────── */

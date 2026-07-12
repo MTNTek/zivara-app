@@ -28,8 +28,39 @@ export default function RootLayout({
     <html lang="en" dir="ltr">
       <body>
         <a href="#main" className="skip-link">Skip to main content</a>
-        <div id="main" style={{ width: '100%', minHeight: '100vh' }}>
-          {children}
+
+        {/*
+          Outer shell: full browser viewport, background shows as the 2.5% gap.
+          Inner wrapper: 95vw × 95vh, centred, rounded, clipped.
+          This gives the "floating card inside the browser" effect.
+        */}
+        <div
+          style={{
+            width: '100vw',
+            minHeight: '100vh',
+            backgroundColor: '#E2E8F0',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            padding: '2.5vh 2.5vw',
+            boxSizing: 'border-box',
+          }}
+        >
+          <div
+            id="main"
+            style={{
+              width: '95vw',
+              minHeight: '95vh',
+              backgroundColor: '#ffffff',
+              borderRadius: '16px',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: '0 4px 32px rgba(0,0,0,0.10)',
+            }}
+          >
+            {children}
+          </div>
         </div>
       </body>
     </html>

@@ -20,15 +20,7 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '1440px',
-          margin: '0 auto',
-          padding: '5rem 1.5rem 6rem',
-          position: 'relative',
-        }}
-      >
+      <div className="page-content" style={{ padding: '5rem 0 6rem', position: 'relative' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', maxWidth: '720px', margin: '0 auto' }}>
           {/* Trust badge */}
           <div
