@@ -12,6 +12,7 @@ import { EmployersModule } from './employers/employers.module';
 import { JobsModule } from './jobs/jobs.module';
 import { ApplicationsModule } from './applications/applications.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { ShiftsModule } from './shifts/shifts.module';
 
 /**
  * Root application module.
@@ -68,6 +69,9 @@ import { NotificationsModule } from './notifications/notifications.module';
 
     // Notifications — in-app notification center, accurate type-to-content mapping
     NotificationsModule,
+
+    // Shifts — scheduling, confirmation, completion, disputes
+    ShiftsModule,
 
     // Job postings, applications, status lifecycle
     JobsModule,
