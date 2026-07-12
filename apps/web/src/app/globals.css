@@ -72,12 +72,10 @@ body {
   overflow: hidden;
 }
 
-/* Inner content — centred, max width for readability */
+/* Inner content — fills the screen width with padding on the sides */
 .screen-content {
   width: 100%;
-  max-width: 1100px;
-  padding: 0 2rem;
-  margin: 0 auto;
+  padding: 0 4vw;
 }
 
 /* ─── Typography ────────────────────────────────────────────────────────────── */

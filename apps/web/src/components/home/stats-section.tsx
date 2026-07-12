@@ -11,7 +11,6 @@ const stats = [
 
 function useCountUp(target: number, duration = 1500, active: boolean) {
   const [count, setCount] = useState(0);
-
   useEffect(() => {
     if (!active) return;
     let start = 0;
@@ -23,18 +22,32 @@ function useCountUp(target: number, duration = 1500, active: boolean) {
     }, 16);
     return () => clearInterval(timer);
   }, [target, duration, active]);
-
   return count;
 }
 
 function StatItem({ value, label, suffix, active }: typeof stats[0] & { active: boolean }) {
   const count = useCountUp(value, 1500, active);
   return (
-    <div className="text-center px-8 py-6 relative">
-      <p className="text-4xl lg:text-5xl font-extrabold text-white font-[Manrope] tabular-nums">
+    <div style={{
+      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      textAlign: 'center', flex: 1, padding: '2vw',
+      borderRight: '1px solid rgba(255,255,255,0.2)',
+    }}>
+      <p style={{
+        fontFamily: "'Manrope', system-ui, sans-serif",
+        fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+        fontWeight: 800, color: '#ffffff', lineHeight: 1,
+        fontVariantNumeric: 'tabular-nums',
+      }}>
         {count.toLocaleString()}{suffix}
       </p>
-      <p className="mt-2 text-sm font-medium text-[#94A3B8] uppercase tracking-widest">{label}</p>
+      <p style={{
+        marginTop: '0.75rem', fontSize: 'clamp(0.8rem, 1.2vw, 1rem)',
+        fontWeight: 600, color: 'rgba(255,255,255,0.7)',
+        textTransform: 'uppercase', letterSpacing: '0.1em',
+      }}>
+        {label}
+      </p>
     </div>
   );
 }
@@ -53,13 +66,17 @@ export function StatsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="full-screen" style={{ backgroundColor: '#14B8A6' }} aria-label="Platform statistics">
-      <div className="screen-content">
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/20">
-          {stats.map((s) => (
-            <StatItem key={s.label} {...s} active={active} />
-          ))}
-        </div>
+    <section
+      ref={ref}
+      className="full-screen"
+      style={{ backgroundColor: '#14B8A6' }}
+      aria-label="Platform statistics"
+    >
+      <div style={{ display: 'flex', width: '100%', height: '100%', flex: 1 }}>
+        {stats.map((s, i) => (
+          <StatItem key={s.label} {...s} active={active}
+            style={i === stats.length - 1 ? { borderRight: 'none' } : {}} />
+        ))}
       </div>
     </section>
   );
