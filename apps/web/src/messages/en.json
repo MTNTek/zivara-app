@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "home": "Home",
+    "jobs": "Jobs",
+    "professionals": "Professionals",
+    "login": "Log in",
+    "register": "Get Started",
+    "dashboard": "Dashboard",
+    "profile": "My Profile",
+    "applications": "Applications",
+    "shifts": "Shifts",
+    "notifications": "Notifications",
+    "logout": "Log out"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Log in to your Zivara account",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "submitButton": "Log in",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Sign up",
+      "serverError": "Invalid email or password."
+    },
+    "register": {
+      "title": "Create your account",
+      "subtitle": "Join Zivara — it's free",
+      "roleLabel": "I am a",
+      "roleProfessional": "I'm looking for work",
+      "roleProfessionalDescription": "Find jobs and shifts that match your skills",
+      "roleEmployer": "I'm hiring",
+      "roleEmployerDescription": "Post jobs and find qualified professionals",
+      "fullNameLabel": "Full name",
+      "emailLabel": "Email address",
+      "passwordLabel": "Password",
+      "submitButton": "Create account",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Log in",
+      "successMessage": "Account created. Check your email.",
+      "companyNameLabel": "Company name",
+      "tradeLicenseLabel": "Trade license number",
+      "industryLabel": "Industry",
+      "operatingCountryLabel": "Operating country",
+      "industryConstruction": "Construction",
+      "industrySolar": "Solar Energy",
+      "industryHospitality": "Hospitality",
+      "industryCleaning": "Cleaning",
+      "industryDomestic": "Domestic Services",
+      "industryTutoring": "Private Tutoring",
+      "selectIndustry": "Select an industry",
+      "backToLogin": "Back to log in"
+    },
+    "forgotPassword": {
+      "title": "Forgot your password?",
+      "subtitle": "Enter your email and we'll send you a reset link",
+      "emailLabel": "Email address",
+      "submitButton": "Send reset link",
+      "backToLogin": "Back to log in",
+      "successMessage": "If an account exists for that email, you'll receive a reset link shortly."
+    },
+    "resetPassword": {
+      "title": "Reset your password",
+      "newPasswordLabel": "New password",
+      "confirmPasswordLabel": "Confirm new password",
+      "submitButton": "Reset password",
+      "successMessage": "Password reset successfully.",
+      "backToLogin": "Back to log in",
+      "invalidToken": "This reset link is invalid or has expired.",
+      "tokenMissing": "No reset token found. Please request a new reset link."
+    }
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": {
+      "title": "Something went wrong",
+      "message": "An unexpected error occurred. Please try again.",
+      "retry": "Try again"
+    },
+    "empty": {
+      "title": "Nothing here yet",
+      "message": "Check back later."
+    },
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "clear": "Clear",
+    "verified": "Verified",
+    "pending": "Pending",
+    "rejected": "Rejected"
+  },
+  "validation": {
+    "required": "This field is required.",
+    "invalidEmail": "Please enter a valid email address.",
+    "passwordTooShort": "Password must be at least 8 characters.",
+    "passwordMismatch": "Passwords do not match.",
+    "invalidUrl": "Please enter a valid URL.",
+    "fileTooLarge": "File size must be under 10 MB.",
+    "invalidFileType": "This file type is not supported."
+  }
+}

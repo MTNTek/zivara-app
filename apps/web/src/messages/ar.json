@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "jobs": "الوظائف",
+    "professionals": "المحترفون",
+    "login": "تسجيل الدخول",
+    "register": "ابدأ الآن",
+    "dashboard": "لوحة التحكم",
+    "profile": "ملفي الشخصي",
+    "applications": "طلباتي",
+    "shifts": "ورديّاتي",
+    "notifications": "الإشعارات",
+    "logout": "تسجيل الخروج"
+  },
+  "auth": {
+    "login": {
+      "title": "مرحباً بعودتك",
+      "subtitle": "سجّل دخولك إلى حسابك في زيفارا",
+      "emailLabel": "البريد الإلكتروني",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "كلمة المرور",
+      "submitButton": "تسجيل الدخول",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "noAccount": "ليس لديك حساب؟",
+      "registerLink": "أنشئ حسابًا",
+      "serverError": "البريد الإلكتروني أو كلمة المرور غير صحيحة."
+    },
+    "register": {
+      "title": "أنشئ حسابك",
+      "subtitle": "انضم إلى زيفارا — مجانًا",
+      "roleLabel": "أنا",
+      "roleProfessional": "أبحث عن عمل",
+      "roleProfessionalDescription": "ابحث عن وظائف وورديّات تناسب مهاراتك",
+      "roleEmployer": "أبحث عن موظفين",
+      "roleEmployerDescription": "انشر وظائف وابحث عن محترفين مؤهلين",
+      "fullNameLabel": "الاسم الكامل",
+      "emailLabel": "البريد الإلكتروني",
+      "passwordLabel": "كلمة المرور",
+      "submitButton": "إنشاء حساب",
+      "hasAccount": "لديك حساب بالفعل؟",
+      "loginLink": "سجّل الدخول",
+      "successMessage": "تم إنشاء الحساب. تحقق من بريدك الإلكتروني.",
+      "companyNameLabel": "اسم الشركة",
+      "tradeLicenseLabel": "رقم الرخصة التجارية",
+      "industryLabel": "القطاع",
+      "operatingCountryLabel": "بلد التشغيل",
+      "industryConstruction": "البناء",
+      "industrySolar": "الطاقة الشمسية",
+      "industryHospitality": "الضيافة",
+      "industryCleaning": "التنظيف",
+      "industryDomestic": "الخدمات المنزلية",
+      "industryTutoring": "التدريس الخاص",
+      "selectIndustry": "اختر القطاع",
+      "backToLogin": "العودة إلى تسجيل الدخول"
+    },
+    "forgotPassword": {
+      "title": "نسيت كلمة المرور؟",
+      "subtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة التعيين",
+      "emailLabel": "البريد الإلكتروني",
+      "submitButton": "إرسال رابط الإعادة",
+      "backToLogin": "العودة إلى تسجيل الدخول",
+      "successMessage": "إذا كان هناك حساب مرتبط بهذا البريد، ستصلك رسالة قريباً."
+    },
+    "resetPassword": {
+      "title": "إعادة تعيين كلمة المرور",
+      "newPasswordLabel": "كلمة المرور الجديدة",
+      "confirmPasswordLabel": "تأكيد كلمة المرور الجديدة",
+      "submitButton": "إعادة تعيين كلمة المرور",
+      "successMessage": "تم إعادة تعيين كلمة المرور بنجاح.",
+      "backToLogin": "العودة إلى تسجيل الدخول",
+      "invalidToken": "رابط إعادة التعيين غير صالح أو منتهي الصلاحية.",
+      "tokenMissing": "لم يتم العثور على رمز إعادة التعيين. يرجى طلب رابط جديد."
+    }
+  },
+  "common": {
+    "loading": "جارٍ التحميل…",
+    "error": {
+      "title": "حدث خطأ ما",
+      "message": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مجددًا"
+    },
+    "empty": {
+      "title": "لا يوجد شيء هنا بعد",
+      "message": "تفقد لاحقًا."
+    },
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "view": "عرض",
+    "back": "رجوع",
+    "next": "التالي",
+    "submit": "إرسال",
+    "confirm": "تأكيد",
+    "close": "إغلاق",
+    "search": "بحث",
+    "filter": "تصفية",
+    "clear": "مسح",
+    "verified": "موثّق",
+    "pending": "قيد الانتظار",
+    "rejected": "مرفوض"
+  },
+  "validation": {
+    "required": "هذا الحقل مطلوب.",
+    "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح.",
+    "passwordTooShort": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل.",
+    "passwordMismatch": "كلمتا المرور غير متطابقتين.",
+    "invalidUrl": "يرجى إدخال رابط صحيح.",
+    "fileTooLarge": "يجب أن يكون حجم الملف أقل من 10 ميغابايت.",
+    "invalidFileType": "نوع الملف هذا غير مدعوم."
+  }
+}
