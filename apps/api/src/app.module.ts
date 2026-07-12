@@ -13,6 +13,7 @@ import { JobsModule } from './jobs/jobs.module';
 import { ApplicationsModule } from './applications/applications.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { ShiftsModule } from './shifts/shifts.module';
+import { RatingsModule } from './ratings/ratings.module';
 
 /**
  * Root application module.
@@ -72,6 +73,9 @@ import { ShiftsModule } from './shifts/shifts.module';
 
     // Shifts — scheduling, confirmation, completion, disputes
     ShiftsModule,
+
+    // Ratings — post-shift reviews, immutability, time-decay average, moderation
+    RatingsModule,
 
     // Job postings, applications, status lifecycle
     JobsModule,
